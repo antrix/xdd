@@ -26,8 +26,15 @@ def teardown_request(exception):
         pass
 
 @app.route('/')
-def index():
-    aphorism = list(r.table('aphorisms').sample(1).run(g.rdb_conn))[0]
+@app.route('/<aphorism>')
+def index(aphorism=None):
+    if aphorism:
+        aphorism = r.table('aphorisms').get(aphorism).run(g.rdb_conn)
+        if not aphorism:
+            abort(404)
+    else:
+        aphorism = list(r.table('aphorisms').sample(1).run(g.rdb_conn))[0]
+
     return render_template('index.html', aphorism=aphorism)
 
 if __name__ == '__main__':
