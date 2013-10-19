@@ -26,10 +26,10 @@ def teardown_request(exception):
         pass
 
 @app.route('/')
-@app.route('/<aphorism>')
-def index(aphorism=None):
-    if aphorism:
-        aphorism = r.table('aphorisms').get(aphorism).run(g.rdb_conn)
+@app.route('/<slug>')
+def index(slug=None):
+    if slug:
+        aphorism = r.table('aphorisms').get(slug).run(g.rdb_conn)
         if not aphorism:
             abort(404)
     else:
