@@ -13,12 +13,18 @@
       #toppadding {
           margin-top: 3em;
       }
+      #hero-box {
+          margin-bottom: 0px;
+      }
       .title {
           text-align: left;
       }
       .description {
           text-align: left;
           font-size: larger;
+      }
+      #meta-bar {
+          float: right;
       }
   </style>
 
@@ -35,11 +41,19 @@
 
 	<div class="row">
 		<div class="small-12 small-centered columns">
-                    <div class="panel callout radius content">
+                    <div class="panel callout radius content" id="hero-box">
                         <h1 class="title"><span class="radius secondary label">{{aphorism.x}}</span> driven development</h1>
                         <p class="description">{{aphorism.desc}}.</p>
                     </div>
 		</div>
+	</div>
+	<div class="row">
+            <div class="small-4 small-offset-8 columns">
+                <ul class="button-group radius" id="meta-bar">
+                    <li><a href="{{ aphorism.source }}" class="button tiny secondary">Source</a></li>
+                    <li><a href="{{ url_for('index', aphorism=aphorism.slug) }}" class="button tiny secondary">§</a></li>
+                </ul>
+            </div>
 	</div>
 
 </body>
