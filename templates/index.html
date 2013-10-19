@@ -14,13 +14,11 @@
           margin-top: 3em;
       }
       .title {
-          text-align: justify;
+          text-align: left;
       }
       .description {
-          text-align: right;
-      }
-      .underscore {
-          text-decoration: underline;
+          text-align: left;
+          font-size: larger;
       }
   </style>
 
@@ -36,10 +34,10 @@
 	</div>
 
 	<div class="row">
-		<div class="small-8 small-centered columns">
+		<div class="small-12 small-centered columns">
                     <div class="panel callout radius content">
-                        <h1 class="title"><span class="underscore">&nbsp;{{aphorism.x}} </span> driven development</h1>
-                        <p class="description">{{aphorism.desc}}</p>
+                        <h1 class="title"><span class="radius secondary label">{{aphorism.x}}</span> driven development</h1>
+                        <p class="description">{{aphorism.desc}}.</p>
                     </div>
 		</div>
 	</div>
