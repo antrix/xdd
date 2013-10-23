@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, g, abort
+from flask import Flask, render_template, g, abort, json, jsonify, url_for
 
 import rethinkdb as r
 from rethinkdb.errors import RqlRuntimeError, RqlDriverError
@@ -28,14 +28,21 @@ def teardown_request(exception):
 @app.route('/')
 @app.route('/<slug>')
 def index(slug=None):
+
     if slug:
         aphorism = r.table('aphorisms').get(slug).run(g.rdb_conn)
         if not aphorism:
             abort(404)
-    else:
-        aphorism = list(r.table('aphorisms').sample(1).run(g.rdb_conn))[0]
 
-    return render_template('index.html', aphorism=aphorism)
+    random_aphorisms = list(r.table('aphorisms').sample(10).run(g.rdb_conn))
+
+    if not slug:
+        aphorism = random_aphorisms.pop()
+
+    for ap in random_aphorisms:
+        ap['permalink'] = url_for('index', slug=ap['slug'])
+
+    return render_template('index.html', aphorism=aphorism, preloaded_aphorisms=json.dumps(random_aphorisms))
 
 if __name__ == '__main__':
     app.run(debug=True)

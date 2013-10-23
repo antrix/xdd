@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width">
   <title>__ driven development</title>
   
-  <link rel="stylesheet" href="static/css/foundation.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}">
 
   <style type="text/css">
       #toppadding {
@@ -15,12 +15,9 @@
       }
       #hero-box {
           margin-bottom: 0px;
-      }
-      .title {
           text-align: left;
       }
-      .description {
-          text-align: left;
+      #the-description {
           font-size: larger;
       }
       #meta-bar {
@@ -28,7 +25,11 @@
       }
   </style>
 
-  <script src="static/js/vendor/custom.modernizr.js"></script>
+  <script src="{{ url_for('static', filename='js/vendor/custom.modernizr.js') }}"></script>
+
+  <script>
+      var Aphorisms = {{ preloaded_aphorisms|safe }} ;
+  </script>
 
 </head>
 <body>
@@ -42,19 +43,27 @@
 	<div class="row">
 		<div class="small-12 small-centered columns">
                     <div class="panel callout radius content" id="hero-box">
-                        <h1 class="title"><a href="{{ url_for('index') }}"><span class="radius secondary label">{{aphorism.x}}</span></a> driven development</h1>
-                        <p class="description">{{aphorism.desc}}.</p>
+                        <h1><a href="{{ url_for('index') }}"><span class="radius secondary label" id="the-aphorism">{{aphorism.x}}</span></a> driven development</h1>
+                        <p id="the-description">{{aphorism.desc}}.</p>
                     </div>
 		</div>
 	</div>
 	<div class="row">
             <div class="small-4 small-offset-8 columns">
                 <ul class="button-group radius" id="meta-bar">
-                    <li><a href="{{ aphorism.source }}" alt="source" title="source" class="button tiny secondary">Source</a></li>
-                    <li><a href="{{ url_for('index', slug=aphorism.slug) }}" alt="permalink" title="permalink" class="button tiny secondary">§</a></li>
+                    <li><a id="the-source" href="{{ aphorism.source }}" alt="source" title="source" class="button tiny secondary">Source</a></li>
+                    <li><a id="the-permalink" href="{{ url_for('index', slug=aphorism.slug) }}" alt="permalink" title="permalink" class="button tiny secondary">§</a></li>
                 </ul>
             </div>
 	</div>
+
+  <script>
+      document.write("<script src={{ url_for('static', filename='') }}" + 
+          ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+          '.js><\/script>');
+  </script>
+
+  <script src="{{ url_for('static', filename='js/xdd.js') }}"></script>
 
 </body>
 </html>
