@@ -10,8 +10,9 @@ $(function() {
             return;
         }
 
-        $("#the-aphorism").text(ap.x);
-        $("#the-description").text(ap.desc);
+        crossFadeText("#the-aphorism", ap.x);
+        crossFadeText("#the-description", ap.desc);
+
         $("#the-source").attr('href', ap.source);
         $("#the-permalink").attr('href', ap.permalink);
 
@@ -19,3 +20,9 @@ $(function() {
 
 
 });
+
+function crossFadeText(locator, text) {
+    $(locator).fadeOut(500, function() {
+        $(this).text(text).fadeIn(500);
+    });
+}
