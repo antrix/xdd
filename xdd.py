@@ -34,15 +34,26 @@ def index(slug=None):
         if not aphorism:
             abort(404)
 
-    random_aphorisms = list(r.table('aphorisms').sample(10).run(g.rdb_conn))
+    random_aphorisms = get_random_aphorisms(g.rdb_conn)
 
     if not slug:
         aphorism = random_aphorisms.pop()
 
+    return render_template('index.html', aphorism=aphorism, preloaded_aphorisms=json.dumps(random_aphorisms))
+
+@app.route('/a/get_random')
+def api_get_random():
+    random_aphorisms = get_random_aphorisms(g.rdb_conn)
+    return jsonify({'Aphorisms': random_aphorisms})
+
+
+def get_random_aphorisms(rdb_conn):
+    random_aphorisms = list(r.table('aphorisms').sample(10).run(rdb_conn))
+
     for ap in random_aphorisms:
         ap['permalink'] = url_for('index', slug=ap['slug'])
 
-    return render_template('index.html', aphorism=aphorism, preloaded_aphorisms=json.dumps(random_aphorisms))
+    return random_aphorisms
 
 if __name__ == '__main__':
     app.run(debug=True)

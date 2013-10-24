@@ -4,6 +4,8 @@ $(function() {
 
         ev.preventDefault();
 
+        fetchMoreIfNeeded();
+
         var ap = Aphorisms.pop();
 
         if (typeof ap == "undefined") {
@@ -17,6 +19,30 @@ $(function() {
         $("#the-permalink").attr('href', ap.permalink);
 
     });
+
+    var fetchInProgress = false;
+
+    function fetchMoreIfNeeded() {
+        if (fetchInProgress || Aphorisms.length > 2) {
+            return;
+        }
+
+        fetchInProgress = true;
+
+        $.ajax({
+            dataType: "json",
+            cache: false,
+            url: "/a/get_random",
+            complete: function() {
+                fetchInProgress = false;
+            },
+            success: function(data) {
+                if (data.Aphorisms.length > 0) {
+                    Aphorisms = data.Aphorisms.concat(Aphorisms);
+                }
+            }
+        });
+    }
 
 
 });
