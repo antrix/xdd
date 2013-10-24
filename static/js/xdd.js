@@ -64,6 +64,8 @@ function updatePageContent(aphorism) {
     crossFadeText("#the-aphorism", aphorism.x);
     crossFadeText("#the-description", aphorism.desc);
 
+    document.title = "[" + aphorism.x + "] driven development";
+
     $("#the-source").attr('href', aphorism.source);
     $("#the-permalink").attr('href', aphorism.permalink);
 }
