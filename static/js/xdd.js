@@ -1,24 +1,23 @@
 $(function() {
 
+    if (!Modernizr.history) {
+        return;
+    }
+
     $( "#the-aphorism" ).click(function(ev) {
 
         ev.preventDefault();
 
-        fetchMoreIfNeeded();
-
         var ap = Aphorisms.pop();
 
-        if (typeof ap == "undefined") {
-            return;
-        }
+        updatePageContent(ap);
 
-        crossFadeText("#the-aphorism", ap.x);
-        crossFadeText("#the-description", ap.desc);
-
-        $("#the-source").attr('href', ap.source);
-        $("#the-permalink").attr('href', ap.permalink);
-
+        fetchMoreIfNeeded();
     });
+
+    window.onpopstate = function(ev) {
+        updatePageContent(ev.state);
+    }
 
     var fetchInProgress = false;
 
@@ -48,7 +47,23 @@ $(function() {
 });
 
 function crossFadeText(locator, text) {
-    $(locator).fadeOut(500, function() {
-        $(this).text(text).fadeIn(500);
+    $(locator).fadeOut(200, function() {
+        $(this).text(text).fadeIn(200);
     });
+}
+
+function updatePageContent(aphorism) {
+    if (typeof aphorism == "undefined" || aphorism == null || aphorism.permalink.length == 0) {
+        return;
+    }
+
+    if (window.location.pathname != aphorism.permalink) {
+        window.history.pushState(aphorism, null, aphorism.permalink);
+    }
+
+    crossFadeText("#the-aphorism", aphorism.x);
+    crossFadeText("#the-description", aphorism.desc);
+
+    $("#the-source").attr('href', aphorism.source);
+    $("#the-permalink").attr('href', aphorism.permalink);
 }
