@@ -20,9 +20,6 @@
       #the-description {
           font-size: larger;
       }
-      #meta-bar {
-          float: right;
-      }
   </style>
 
   <script src="{{ url_for('static', filename='js/vendor/custom.modernizr.js') }}"></script>
@@ -50,9 +47,11 @@
 	</div>
 	<div class="row">
             <div class="small-4 small-offset-8 columns">
-                <ul class="button-group radius" id="meta-bar">
+                <ul class="button-group radius right">
                     <li><a id="the-source" href="{{ aphorism.source }}" alt="source" title="source" class="button tiny secondary">Source</a></li>
                     <li><a id="the-permalink" href="{{ url_for('index', slug=aphorism.slug) }}" alt="permalink" title="permalink" class="button tiny secondary">§</a></li>
+                    <li><a href="https://docs.google.com/forms/d/1ond7HnITa_PKzPy3iNyMPBA8wKL8G0UHGADgpX1jmGQ/viewform" 
+                           alt="suggest new" title="suggest new" target="_blank" class="button tiny secondary">+</a></li>
                 </ul>
             </div>
 	</div>
