@@ -31,7 +31,7 @@ $(function() {
         $.ajax({
             dataType: "json",
             cache: false,
-            url: "/a/get_random",
+            url: "/a/random",
             complete: function() {
                 fetchInProgress = false;
             },

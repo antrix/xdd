@@ -22,7 +22,7 @@ def index(slug=None):
 
     return render_template('index.html', aphorism=aphorism, preloaded_aphorisms=json.dumps(random_aphorisms))
 
-@app.route('/a/get_random')
+@app.route('/a/random')
 def api_get_random():
     random_aphorisms = get_random_aphorisms()
     return jsonify({'Aphorisms': random_aphorisms})
