@@ -1,0 +1,26 @@
+[
+{
+    "x":  "denial" ,
+    "slug":  "denial" ,
+    "desc": "when everybody pretends there is a method for what’s being done, and that things are going ok, when in reality, things are a mess and the process is on the floor" ,
+    "source": "http://scottberkun.com/2007/asshole-driven-development/"
+} ,
+{
+    "x":  "CYA" ,
+    "slug":  "cover-your-ass" ,
+    "desc":  "when the driving force behind your efforts is to make sure that when the shit hits the fan, your are not the one to blame" ,
+    "source": "http://scottberkun.com/2007/asshole-driven-development/"
+} ,
+{
+    "x":  "asshole" ,
+    "slug":  "asshole" ,
+    "desc":  "when the biggest jerk in the team makes all the big decisions" ,
+    "source": "http://scottberkun.com/2007/asshole-driven-development/"
+} ,
+{
+    "x":  "résumé" ,
+    "slug":  "resume" ,
+    "desc":  "when you ignore requirements and pick implementation approaches based on how good they look good on your resume" ,
+    "source": "http://www.bitnative.com/2013/02/26/are-you-a-resume-driven-developer/"
+}
+]
