@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>[{{ title }}] driven development</title>
+  
+  <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/foundation.min.css">
+
+  <style type="text/css">
+      #toppadding {
+          margin-top: 3em;
+      }
+      #hero-box {
+          margin-bottom: 0px;
+          text-align: left;
+      }
+      #the-description {
+          font-size: larger;
+      }
+      #footer {
+          position: fixed;
+          bottom: 0px;
+          left: 0px;
+          width: 100%;
+          font-size: smaller;
+          padding: 0.8em;
+          color: #777;
+          background-color: #333;
+      }
+      #footer p {
+          margin: 0;
+      }
+      #footer a, #footer a:visited {
+          color: #999;
+      }
+      #footer a:hover {
+          color: #bbb;
+      }
+  </style>
+
+  <script src="/static/js/vendor/custom.modernizr.js"></script>
+
+</head>
+<body>
+
+	<div class="row">
+		<div class="small-1 small-centered columns">
+			<p id="toppadding">&nbsp;</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12 small-centered columns">
+                    <div class="panel callout radius content" id="hero-box">
+                        <h1><a href="/"><span class="radius secondary label" id="the-aphorism">{{ title }}</span></a> driven development</h1>
+                        <p id="the-description">{{ desc }}</p>
+                    </div>
+		</div>
+	</div>
+	<div class="row">
+            <div class="small-4 small-offset-8 columns">
+                <ul class="button-group radius right">
+                    <li><a id="the-source" href="{{ source }}" alt="source" title="source" class="button tiny secondary">Source</a></li>
+                    <li><a id="the-permalink" href="{{ slug }}" alt="permalink" title="permalink" class="button tiny secondary">§</a></li>
+                    <li><a href="https://docs.google.com/forms/d/1ond7HnITa_PKzPy3iNyMPBA8wKL8G0UHGADgpX1jmGQ/viewform" 
+                           alt="suggest new" title="suggest new" target="_blank" class="button tiny secondary">+</a></li>
+                </ul>
+            </div>
+	</div>
+
+        <div id="footer" class="text-center">
+            <p>[Flask, Foundation, JQuery] driven development by <a href="http://antrix.net/">Deepak Sarda</a></p>
+        </div>
+
+  <script>
+      document.write("<script src=/static/" + 
+          ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+          '.js><\/script>');
+  </script>
+
+</body>
+</html>
