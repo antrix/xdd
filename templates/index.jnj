@@ -62,12 +62,26 @@
 		</div>
 	</div>
 	<div class="row">
-            <div class="small-4 small-offset-8 columns">
-                <ul class="button-group radius right">
+            <div class="small-4 columns">
+                <ul class="button-group radius left">
+                    {% if prev_slug %}
+                    <li><a id="the-prev" href="{{ prev_slug }}" alt="previous" title="previous" class="button tiny secondary">prev</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="small-4 columns">
+                <ul class="button-group radius">
                     <li><a id="the-source" href="{{ source }}" alt="source" title="source" class="button tiny secondary">Source</a></li>
                     <li><a id="the-permalink" href="{{ slug }}" alt="permalink" title="permalink" class="button tiny secondary">§</a></li>
                     <li><a href="https://docs.google.com/forms/d/1ond7HnITa_PKzPy3iNyMPBA8wKL8G0UHGADgpX1jmGQ/viewform" 
                            alt="suggest new" title="suggest new" target="_blank" class="button tiny secondary">+</a></li>
+                </ul>
+            </div>
+            <div class="small-4 columns">
+                <ul class="button-group radius right">
+                    {% if next_slug %}
+                    <li><a id="the-next" href="{{ next_slug }}" alt="next" title="next" class="button tiny secondary">next</a></li>
+                    {% endif %}
                 </ul>
             </div>
 	</div>
