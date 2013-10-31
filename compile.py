@@ -3,6 +3,8 @@
 import iso8601
 import json
 import os
+import shutil
+
 from jinja2 import Environment, FileSystemLoader
 
 ## Start configuration options ##
@@ -21,7 +23,7 @@ template_loader = FileSystemLoader(template_dir)
 env = Environment(autoescape=False, loader=template_loader)
 template = env.get_template("index.jnj")
 
-content_files = ((f, os.path.join(os.getcwd(), content_dir, f)) for f in os.listdir(content_dir) if f.endswith(content_ext))
+content_files = ((f, os.path.join(content_dir, f)) for f in os.listdir(content_dir) if f.endswith(content_ext))
 
 context_list = []
 
@@ -49,10 +51,13 @@ for context in context_list:
 
     o = template.render(context)
 
-    dest_dir = os.path.join(os.getcwd(), output_dir, context["name"])
+    dest_dir = os.path.join(output_dir, context["name"])
 
     if not os.path.exists(dest_dir):
         os.makedirs(dest_dir)
 
-    open(os.path.join(dest_dir, 'index.html'), 'w').write(o.encode("utf-8"))
+    output_file = os.path.join(dest_dir, 'index.html')
 
+    open(output_file, 'w').write(o.encode("utf-8"))
+
+shutil.copy(os.path.join(output_dir, context_list[-1]["name"], "index.html"), output_dir)
