@@ -51,21 +51,28 @@ def gen_html_pages(content_list, jinja_env):
 
     template = jinja_env.get_template("index.jnj")
 
-    for context in content_list:
+    for content in content_list:
         #print "Now name:", context["name"], context["date"]
 
-        o = template.render(context)
+        o = template.render(content)
 
-        dest_dir = os.path.join(output_dir, context["name"])
+        dest_dir = os.path.join(output_dir, content["name"])
 
         if not os.path.exists(dest_dir):
             os.makedirs(dest_dir)
 
         output_file = os.path.join(dest_dir, 'index.html')
-
         open(output_file, 'w').write(o.encode("utf-8"))
 
+        json_todump = dict(content)
+        json_todump["date"] = json_todump["date"].isoformat('T') 
+
+        json_file = open(os.path.join(dest_dir, 'index.json'), 'w')
+        json.dump(json_todump, json_file, separators=(',',':'))
+        json_file.close()
+
     shutil.copy(os.path.join(output_dir, content_list[-1]["name"], "index.html"), output_dir)
+    shutil.copy(os.path.join(output_dir, content_list[-1]["name"], "index.json"), output_dir)
 
 def gen_atom_feed(content_list, jinja_env):
 
