@@ -74,4 +74,6 @@ function updatePageContent(aphorism) {
     } else {
         $("#the-next").hide();
     }
+
+    ga('send', 'pageview');
 }
