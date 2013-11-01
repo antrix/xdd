@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-OUTPUT_DIR="./output"
+OUTPUT_DIR="./public"
 STATIC_DIR="./static"
 
 

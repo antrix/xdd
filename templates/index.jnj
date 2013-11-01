@@ -84,7 +84,7 @@
 	</div>
 
         <div id="footer" class="text-center">
-            <p>[Flask, Foundation, JQuery] driven development by <a href="http://antrix.net/">Deepak Sarda</a></p>
+            <p>[Foundation, JQuery] driven development by <a href="http://antrix.net/">Deepak Sarda</a></p>
         </div>
 
   <script>
