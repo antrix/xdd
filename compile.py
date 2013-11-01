@@ -8,6 +8,7 @@ import shutil
 from jinja2 import Environment, FileSystemLoader
 
 ## Start configuration options ##
+site_url = "http://devdriven.by"
 # directory where to start looking for templates
 content_dir = os.path.join(os.getcwd(), 'content')
 # directory where to save generated files
@@ -36,6 +37,7 @@ def get_content_list():
 
         content_list.append(context)
 
+    # oldest first
     content_list.sort(key=lambda c: c["date"])
 
     for idx, context in enumerate(content_list):
@@ -65,6 +67,23 @@ def gen_html_pages(content_list, jinja_env):
 
     shutil.copy(os.path.join(output_dir, content_list[-1]["name"], "index.html"), output_dir)
 
+def gen_atom_feed(content_list, jinja_env):
+
+    # latest first
+    aphorisms = sorted(content_list, key=lambda c: c["date"], reverse=True)
+
+    template = jinja_env.get_template("feed.jnj")
+
+    o = template.render(aphorisms=aphorisms, site_url=site_url)
+
+    dest_dir = os.path.join(output_dir, "feed")
+    if not os.path.exists(dest_dir):
+        os.makedirs(dest_dir)
+
+    output_file = os.path.join(dest_dir, 'index.atom')
+
+    open(output_file, 'w').write(o.encode("utf-8"))
+
 def main():
 
     content_list = get_content_list()
@@ -73,6 +92,8 @@ def main():
     env = Environment(autoescape=False, loader=template_loader)
 
     gen_html_pages(content_list, env)
+
+    gen_atom_feed(content_list, env)
 
 if __name__ == '__main__':
     main()
