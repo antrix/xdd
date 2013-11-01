@@ -4,7 +4,7 @@ OUTPUT_DIR="./output"
 STATIC_DIR="./static"
 
 
-rm -rf ${OUTPUT_DIR}
+rm -rf ${OUTPUT_DIR}/*
 python compile.py
 
 cp -r ${STATIC_DIR} ${OUTPUT_DIR}
