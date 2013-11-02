@@ -65,10 +65,8 @@ function updatePageContent(aphorism) {
 
     if (aphorism.source != null) {
         $("#the-source").attr('href', aphorism.source);
-        $("#the-source").text('Source');
     } else {
         $("#the-source").attr('href', 'mailto:deepak@antrix.net?subject=source for item on devdriven.by');
-        $("#the-source").text('Source?');
     }
 
     $("#the-permalink").attr('href', aphorism.slug);

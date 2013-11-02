@@ -11,6 +11,7 @@
 
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.3/normalize.min.css">
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/foundation/4.3.2/css/foundation.min.css">
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css">
 
   <style type="text/css">
       #toppadding {
@@ -28,6 +29,10 @@
       }
       #the-description {
           font-size: larger;
+      }
+      #the-prev, #the-next {
+          padding-left: 1.25em;
+          padding-right: 1.25em;
       }
       #footer {
           position: fixed;
@@ -63,27 +68,34 @@
 
 	<div class="row">
 		<div class="small-12 small-centered columns">
-                    <div class="panel callout radius content orbit-container" id="hero-box">
+                    <div class="panel callout radius content" id="hero-box">
                         <h1><a data-pjax href="/"><span id="the-aphorism">{{ title }}</span></a> driven development</h1>
                         <p id="the-description">{{ desc }}</p>
-                        <!-- Prev/Next Arrows -->
-                        <a data-pjax id="the-prev" href="{{ prev_slug }}" alt="previous" title="previous" class="orbit-prev {% if not prev_slug %}hide{% endif %}">prev <span/></a>
-                        <a data-pjax id="the-next" href="{{ next_slug }}" alt="next" title="next" class="orbit-next {% if not next_slug %}hide{% endif %}">next <span/></a>
                     </div>
 		</div>
 	</div>
 	<div class="row">
-            <div class="small-4 small-offset-8 columns">
+            <div class="small-4 columns">
+                <ul class="button-group radius left">
+                    <li><a data-pjax id="the-prev" href="{{ prev_slug }}" 
+                           alt="previous" title="previous" class="button tiny secondary" 
+                           {% if not prev_slug %}style="display: none;"{% endif %}><i class="fa fa-arrow-left"></i></a></li>
+                    <li><a data-pjax id="the-next" href="{{ next_slug }}" 
+                           alt="next" title="next" class="button tiny secondary" 
+                           {% if not next_slug %}style="display: none;"{% endif %}><i class="fa fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
+            <div class="small-8 columns">
                 <ul class="button-group radius right">
-                    <li><a href="https://twitter.com/share" id="the-tweet" alt="share on twitter" title="share on twitter" class="button tiny secondary" target="_blank">Tweet</a></li>
+                    <li><a href="https://twitter.com/share" id="the-tweet" alt="share on twitter" title="share on twitter" class="button tiny secondary" target="_blank"><i class="fa fa-twitter"></i></a></li>
                     {% if source %}
-                    <li><a id="the-source" href="{{ source }}" alt="source" title="source" class="button tiny secondary">Source</a></li>
+                    <li><a id="the-source" href="{{ source }}" alt="source" title="source" class="button tiny secondary"><i class="fa fa-external-link-square"></i></a></li>
                     {% else %}
-                    <li><a id="the-source" href="mailto:deepak@antrix.net?subject=source for item on devdriven.by" alt="source" title="source" class="button tiny secondary">Source?</a></li>
+                    <li><a id="the-source" href="mailto:deepak@antrix.net?subject=source for item on devdriven.by" alt="source" title="source" class="button tiny secondary"><i class="fa fa-external-link-square"></i></a></li>
                     {% endif %}
-                    <li><a id="the-permalink" href="{{ slug }}" alt="permalink" title="permalink" class="button tiny secondary">§</a></li>
+                    <li><a id="the-permalink" href="{{ slug }}" alt="permalink" title="permalink" class="button tiny secondary"><i class="fa fa-bookmark"></i></a></li>
                     <li><a href="https://docs.google.com/forms/d/1ond7HnITa_PKzPy3iNyMPBA8wKL8G0UHGADgpX1jmGQ/viewform" 
-                           alt="suggest new" title="suggest new" target="_blank" class="button tiny secondary">+</a></li>
+                           alt="suggest new" title="suggest new" target="_blank" class="button tiny secondary"><i class="fa fa-plus"></i></a></li>
                 </ul>
             </div>
 	</div>
