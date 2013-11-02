@@ -11,6 +11,8 @@ $(function() {
 
     });
 
+    $("#the-tweet").click(onTweetClick);
+
     window.onpopstate = function(ev) {
         updatePageContent(ev.state);
     }
@@ -76,4 +78,16 @@ function updatePageContent(aphorism) {
     }
 
     ga('send', 'pageview');
+}
+
+function onTweetClick(ev) {
+    ev.preventDefault();
+
+    link = "https://twitter.com/share";
+    link += "?url=" +  encodeURIComponent(window.location.href);
+    link += "&text=" + encodeURIComponent(document.title);
+
+    newwindow = window.open(link, 'Share on Twitter', 'height=450,width=550');
+    if (window.focus) {newwindow.focus()}
+    return false;
 }

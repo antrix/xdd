@@ -75,6 +75,7 @@
 	<div class="row">
             <div class="small-4 small-offset-8 columns">
                 <ul class="button-group radius right">
+                    <li><a href="https://twitter.com/share" id="the-tweet" class="button tiny secondary" target="_blank">Tweet</a></li>
                     <li><a id="the-source" href="{{ source }}" alt="source" title="source" class="button tiny secondary">Source</a></li>
                     <li><a id="the-permalink" href="{{ slug }}" alt="permalink" title="permalink" class="button tiny secondary">§</a></li>
                     <li><a href="https://docs.google.com/forms/d/1ond7HnITa_PKzPy3iNyMPBA8wKL8G0UHGADgpX1jmGQ/viewform" 
