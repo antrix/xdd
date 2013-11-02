@@ -26,12 +26,15 @@ $(function() {
 
         fetchInProgress = true;
 
+        $("body").css("cursor", "progress");
+
         $.ajax({
             dataType: "json",
             cache: false,
             url: url + "index.json",
             complete: function() {
                 fetchInProgress = false;
+                $("body").css("cursor", "default");
             },
             success: updatePageContent
         });
@@ -84,7 +87,7 @@ function onTweetClick(ev) {
     ev.preventDefault();
 
     link = "https://twitter.com/share";
-    link += "?url=" +  encodeURIComponent(window.location.href);
+    link += "?url=" +  encodeURIComponent(window.location.host + $("#the-permalink").attr("href"));
     link += "&text=" + encodeURIComponent(document.title);
 
     newwindow = window.open(link, 'Share on Twitter', 'height=450,width=550');
