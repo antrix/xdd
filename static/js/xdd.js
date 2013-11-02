@@ -63,7 +63,14 @@ function updatePageContent(aphorism) {
 
     document.title = "[" + aphorism.title + "] driven development";
 
-    $("#the-source").attr('href', aphorism.source);
+    if (aphorism.source != null) {
+        $("#the-source").attr('href', aphorism.source);
+        $("#the-source").text('Source');
+    } else {
+        $("#the-source").attr('href', 'mailto:deepak@antrix.net?subject=source for item on devdriven.by');
+        $("#the-source").text('Source?');
+    }
+
     $("#the-permalink").attr('href', aphorism.slug);
 
     if (aphorism.prev_slug != null) {
