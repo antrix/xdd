@@ -96,6 +96,7 @@ function onTweetClick(ev) {
     link = "https://twitter.com/share";
     link += "?url=" +  encodeURIComponent(window.location.protocol + "//" + window.location.host + $("#the-permalink").attr("href"));
     link += "&text=" + encodeURIComponent('"' + document.title + '" -');
+    link += "&via=devdrivenby";
 
     newwindow = window.open(link, 'Share on Twitter', 'height=450,width=550');
     if (window.focus) {newwindow.focus()}
