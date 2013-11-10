@@ -107,6 +107,7 @@
 	</div>
 
         <div id="footer" class="text-center">
+            <p><a href="https://twitter.com/intent/follow?screen_name=devdrivenby" alt="follow @devdrivenby on twitter" title="follow @devdrivenby on twitter"><i class="fa fa-twitter"></i> Follow @devdrivenby</a></p>
             <p>[<a href="http://foundation.zurb.com/">Foundation</a>, <a href="http://jquery.com/">jQuery</a>] driven development by <a href="http://antrix.net/">Deepak Sarda</a>. 
             Got <a href="mailto:dev@devdriven.by?subject=feedback on devdriven.by">Feedback</a>?</p>
         </div>
