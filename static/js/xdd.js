@@ -45,7 +45,7 @@ $(function() {
 
 function crossFadeText(locator, text) {
     $(locator).fadeOut(200, function() {
-        $(this).text(text).fadeIn(200);
+        $(this).html(text).fadeIn(200);
     });
 }
 
@@ -65,8 +65,10 @@ function updatePageContent(aphorism) {
 
     if (aphorism.source != null) {
         $("#the-source").attr('href', aphorism.source);
+        $("#the-source").html('<i class="fa fa-external-link-square"></i>');
     } else {
         $("#the-source").attr('href', 'mailto:deepak@antrix.net?subject=source for item on devdriven.by');
+        $("#the-source").html('<i class="fa fa-question-circle"></i>');
     }
 
     $("#the-permalink").attr('href', aphorism.slug);

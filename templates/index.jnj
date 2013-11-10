@@ -95,9 +95,9 @@
                 <ul class="button-group radius right">
                     <li><a href="https://twitter.com/share" id="the-tweet" alt="share on twitter" title="share on twitter" class="button tiny secondary" target="_blank"><i class="fa fa-twitter"></i></a></li>
                     {% if source %}
-                    <li><a id="the-source" href="{{ source }}" alt="source" title="source" class="button tiny secondary"><i class="fa fa-external-link-square"></i></a></li>
+                    <li><a id="the-source" href="{{ source }}" target="_blank" alt="source" title="source" class="button tiny secondary"><i class="fa fa-external-link-square"></i></a></li>
                     {% else %}
-                    <li><a id="the-source" href="mailto:deepak@antrix.net?subject=source for item on devdriven.by" alt="source" title="source" class="button tiny secondary"><i class="fa fa-external-link-square"></i></a></li>
+                    <li><a id="the-source" href="mailto:deepak@antrix.net?subject=source for item on devdriven.by" target="_blank" alt="source" title="source" class="button tiny secondary"><i class="fa fa-question-circle"></i></a></li>
                     {% endif %}
                     <li><a id="the-permalink" href="{{ slug }}" alt="permalink" title="permalink" class="button tiny secondary"><i class="fa fa-bookmark"></i></a></li>
                     <li><a href="https://docs.google.com/forms/d/1ond7HnITa_PKzPy3iNyMPBA8wKL8G0UHGADgpX1jmGQ/viewform" 
