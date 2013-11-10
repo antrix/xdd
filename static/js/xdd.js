@@ -30,7 +30,7 @@ $(function() {
 
         $.ajax({
             dataType: "json",
-            cache: false,
+            cache: true,
             url: url + "index.json",
             complete: function() {
                 fetchInProgress = false;

@@ -1,4 +1,7 @@
 Options -Indexes
 AddType application/atom+xml .atom
 AddType application/json .json
+<files *.json>
+SetOutputFilter DEFLATE
+</files>
 
