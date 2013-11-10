@@ -10,14 +10,8 @@
   <link rel="self" href="{{ site_url }}/feed/" />
 
   <updated>{{ aphorisms[0].date.isoformat('T') }}</updated>
-  <rights>Copyright 2013 Deepak Sarda</rights>
+  <rights>Copyright 2013</rights>
   
-  <author>
-    <name>Deepak Sarda</name>
-    <email>dsarda+devdrivenby@gmail.com</email>
-    <uri>http://antrix.net/</uri>
-  </author>
-
   {% for aphorism in aphorisms %}
   <entry>
       <title>[{{ aphorism.title }}] driven development</title>

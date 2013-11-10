@@ -67,7 +67,7 @@ function updatePageContent(aphorism) {
         $("#the-source").attr('href', aphorism.source);
         $("#the-source").html('<i class="fa fa-external-link-square"></i>');
     } else {
-        $("#the-source").attr('href', 'mailto:deepak@antrix.net?subject=source for item on devdriven.by');
+        $("#the-source").attr('href', 'mailto:dev@devdriven.by?subject=source for item on devdriven.by');
         $("#the-source").html('<i class="fa fa-question-circle"></i>');
     }
 
