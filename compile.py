@@ -12,7 +12,7 @@ site_url = "http://devdriven.by"
 # directory where to start looking for templates
 content_dir = os.path.join(os.getcwd(), 'content')
 # directory where to save generated files
-output_dir = os.path.join(os.getcwd(), 'public')
+output_dir = os.path.join(os.getcwd(), os.environ['OUTPUT_DIR'])
 # directory where templates are stored
 template_dir = os.path.join(os.getcwd(), 'templates')
 # source content files suffix
