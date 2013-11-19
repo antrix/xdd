@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>[{{ title }}] driven development</title>
   
   <link href="/feed/index.atom" type="application/atom+xml" rel="alternate" title="Content Feed">
@@ -16,7 +16,8 @@
 
 
   <style type="text/css">
-      body { min-height: 600px; }
+      html, body { height: 100%; }
+      #wrapper { min-height: 100%; margin: 0 auto -4.5em; }
       #toppadding {
           margin-top: 3em;
       }
@@ -40,17 +41,20 @@
           padding-left: 1.25em;
           padding-right: 1.25em;
       }
+      #push {
+          height: 8em;
+          clear: both;
+      }
       #footer {
-          position: fixed;
-          bottom: 0px;
-          left: 0px;
+          height: 4.5em;
+          clear: both;
           width: 100%;
-          font-size: smaller;
           padding: 0.8em;
           color: #777;
           background-color: #333;
       }
       #footer p {
+          font-size: smaller;
           margin: 0;
       }
       #footer a, #footer a:visited {
@@ -65,7 +69,7 @@
 
 </head>
 <body>
-
+    <div id="wrapper">
 	<div class="row">
 		<div class="small-1 small-centered columns">
 			<p id="toppadding">&nbsp;</p>
@@ -105,6 +109,8 @@
                 </ul>
             </div>
 	</div>
+        <div id="push"></div>
+    </div>
 
         <div id="footer" class="text-center">
             <p><a href="https://twitter.com/intent/follow?screen_name=devdrivenby" alt="follow @devdrivenby on twitter" title="follow @devdrivenby on twitter"><i class="fa fa-twitter"></i> Follow @devdrivenby</a></p>
