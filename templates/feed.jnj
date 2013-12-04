@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"
-      xmlns:xh="http://www.w3.org/1999/xhtml"
       xml:base="{{ site_url }}/" >
 
   <title>[x] driven development</title>
@@ -11,15 +10,19 @@
 
   <updated>{{ aphorisms[0].date.isoformat('T') }}</updated>
   <rights>Copyright 2013</rights>
+
+  <author>
+      <name>Harried Dev</name>
+  </author>
   
   {% for aphorism in aphorisms %}
   <entry>
-      <title>[{{ aphorism.title|e }}] driven development</title>
+      <title type="html">[{{ aphorism.title|e }}] driven development</title>
       <content type="xhtml">
-      <xh:div>{{ aphorism.desc|e }}</xh:div>  
+          <div xmlns="http://www.w3.org/1999/xhtml">{{ aphorism.desc }}</div>  
       </content>
 
-      <published>{{ aphorism.date.isoformat('T') }}</published>
+      <updated>{{ aphorism.date.isoformat('T') }}</updated>
 
       <link rel="alternate" type="text/html" href="{{ site_url }}{{ aphorism.slug }}"/>
       <id>{{ site_url }}{{ aphorism.slug }}</id>
