@@ -7,16 +7,16 @@
   <id>{{ site_url }}/</id>
 
   <link href="{{ site_url }}/" />
-  <link rel="self" href="{{ site_url }}/feed/" />
+  <link rel="self" href="{{ site_url }}/feed/index.atom" />
 
   <updated>{{ aphorisms[0].date.isoformat('T') }}</updated>
   <rights>Copyright 2013</rights>
   
   {% for aphorism in aphorisms %}
   <entry>
-      <title>[{{ aphorism.title }}] driven development</title>
+      <title>[{{ aphorism.title|e }}] driven development</title>
       <content type="xhtml">
-      <xh:div>{{ aphorism.desc }}</xh:div>  
+      <xh:div>{{ aphorism.desc|e }}</xh:div>  
       </content>
 
       <published>{{ aphorism.date.isoformat('T') }}</published>
