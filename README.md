@@ -1,6 +1,6 @@
 # OVERVIEW
 
-This is a simple static site generator for http://devdriven.by/
+This is a simple static site generator for <http://devdriven.by/>
 
 The core of it is a `compile.py` script that takes json formatted files from the `content` directory and generates html files using Jinja `templates`.
 
@@ -14,6 +14,6 @@ All files in this repository are Copyright Deepak Sarda _except_ for the followi
 * `compile.py`
 * `static/js/xdd.js`
 
-The intention is to encourage re-use and sharing of _code_ without facilitating whole-sale ripoffs of the website.
+The intention is to encourage re-use and sharing of _code_ without facilitating wholesale ripoffs of the website.
 
 [1]: http://opensource.org/licenses/MIT
