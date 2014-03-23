@@ -5,7 +5,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>[{{ title }}] driven development</title>
+  <title>what is {{ title }} driven development</title>
+
+  <meta name="description" content="{{ title }} driven development: a tongue-in-cheek definition drawn from the wisdom of software practitioners">
   
   <link href="/feed/index.atom" type="application/atom+xml" rel="alternate" title="Content Feed">
 
