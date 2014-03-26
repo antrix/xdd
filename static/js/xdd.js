@@ -61,7 +61,14 @@ function updatePageContent(aphorism) {
     crossFadeText("#the-aphorism", aphorism.title);
     crossFadeText("#the-description", aphorism.desc);
 
-    document.title = "[" + aphorism.title + "] driven development";
+    document.title = "What is " + aphorism.title + " driven development?";
+
+    var meta=document.getElementsByTagName("meta");
+    for (var i=0; i<meta.length; i++) {
+        if (meta[i].name.toLowerCase() == "description") {
+            meta[i].content = aphorism.title + " driven development: a tongue-in-cheek definition drawn from the wisdom of software practitioners"
+        }
+    }
 
     if (aphorism.source != null) {
         $("#the-source").attr('href', aphorism.source);
