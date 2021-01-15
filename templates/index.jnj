@@ -5,9 +5,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>What is {{ title }} driven development?</title>
+  <title>What is {{ aphorism.title }} driven development?</title>
 
-  <meta name="description" content="{{ title }} driven development: a tongue-in-cheek definition drawn from the wisdom of software practitioners">
+  <meta name="description" content="{{ aphorism.title }} driven development: a tongue-in-cheek definition drawn from the wisdom of software practitioners">
   
   <link href="/feed/index.atom" type="application/atom+xml" rel="alternate" title="Content Feed">
 
@@ -81,36 +81,47 @@
 	<div class="row">
 		<div class="small-12 small-centered columns">
                     <div class="panel callout radius content" id="hero-box">
-                        <h1><a data-pjax href="/"><span id="the-aphorism">{{ title }}</span></a> driven development</h1>
-                        <p id="the-description">{{ desc }}</p>
+                        <h1><a data-pjax href="/"><span id="the-aphorism">{{ aphorism.title }}</span></a> driven development</h1>
+                        <p id="the-description">{{ aphorism.desc }}</p>
                     </div>
 		</div>
 	</div>
 	<div class="row">
             <div class="small-4 columns">
                 <ul class="button-group radius left">
-                    <li><a data-pjax id="the-prev" href="{{ prev_slug }}" 
+                    <li><a data-pjax id="the-prev" href="{{ aphorism.prev_slug }}" 
                            alt="previous" title="previous" class="button tiny secondary" 
-                           {% if not prev_slug %}style="display: none;"{% endif %}><i class="fa fa-arrow-left"></i></a></li>
-                    <li><a data-pjax id="the-next" href="{{ next_slug }}" 
+                           {% if not aphorism.prev_slug %}style="display: none;"{% endif %}><i class="fa fa-arrow-left"></i></a></li>
+                    <li><a data-pjax id="the-next" href="{{ aphorism.next_slug }}" 
                            alt="next" title="next" class="button tiny secondary" 
-                           {% if not next_slug %}style="display: none;"{% endif %}><i class="fa fa-arrow-right"></i></a></li>
+                           {% if not aphorism.next_slug %}style="display: none;"{% endif %}><i class="fa fa-arrow-right"></i></a></li>
                 </ul>
             </div>
             <div class="small-8 columns">
                 <ul class="button-group radius right">
                     <li><a href="https://twitter.com/share" id="the-tweet" alt="share on twitter" title="share on twitter" class="button tiny secondary" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                    {% if source %}
-                    <li><a id="the-source" href="{{ source }}" target="_blank" alt="source" title="source" class="button tiny secondary"><i class="fa fa-external-link-square"></i></a></li>
+                    {% if aphorism.source %}
+                    <li><a id="the-source" href="{{ aphorism.source }}" target="_blank" alt="source" title="source" class="button tiny secondary"><i class="fa fa-external-link-square"></i></a></li>
                     {% else %}
                     <li><a id="the-source" href="mailto:dev@devdriven.by?subject=source for item on devdriven.by" target="_blank" alt="source" title="source" class="button tiny secondary"><i class="fa fa-question-circle"></i></a></li>
                     {% endif %}
-                    <li><a id="the-permalink" href="{{ slug }}" alt="permalink" title="permalink" class="button tiny secondary"><i class="fa fa-bookmark"></i></a></li>
+                    <li><a id="the-permalink" href="{{ aphorism.slug }}" alt="permalink" title="permalink" class="button tiny secondary"><i class="fa fa-bookmark"></i></a></li>
                     <li><a href="https://docs.google.com/forms/d/1ond7HnITa_PKzPy3iNyMPBA8wKL8G0UHGADgpX1jmGQ/viewform" 
                            alt="suggest new" title="suggest new" target="_blank" class="button tiny secondary"><i class="fa fa-plus"></i></a></li>
                 </ul>
             </div>
 	</div>
+
+	<div class="row" style="margin-top: 2em;">
+		<div class="small-12 small-centered columns">
+                    <div style="text-align: justify">
+                        {% for aph in all_aphorisms|sort(attribute="title") %}
+                            <a data-pjax href="{{ aph.slug }}">{{ aph.title | lower }}</a>{% if not loop.last %} &middot; {% endif %}
+                        {% endfor %}
+                    </div>
+		</div>
+	</div>
+
         <div id="push"></div>
     </div>
 

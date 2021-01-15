@@ -5,7 +5,7 @@ import json
 import os
 import shutil
 
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
 ## Start configuration options ##
 site_url = "http://devdriven.by"
@@ -54,7 +54,7 @@ def gen_html_pages(content_list, jinja_env):
     for content in content_list:
         #print "Now name:", context["name"], context["date"]
 
-        o = template.render(content)
+        o = template.render({"aphorism": content, "all_aphorisms": content_list})
 
         dest_dir = os.path.join(output_dir, content["name"])
 
@@ -97,7 +97,7 @@ def main():
     content_list = get_content_list()
 
     template_loader = FileSystemLoader(template_dir)
-    env = Environment(autoescape=False, loader=template_loader)
+    env = Environment(autoescape=False, loader=template_loader, undefined=StrictUndefined)
 
     gen_html_pages(content_list, env)
 
