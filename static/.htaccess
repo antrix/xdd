@@ -1,7 +1,25 @@
+RewriteEngine on
+RewriteBase /
 Options -Indexes
 AddType application/atom+xml .atom
 AddType application/json .json
 <files *.json>
 SetOutputFilter DEFLATE
 </files>
+
+## Force HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+# Turn off Etags
+Header unset ETag
+FileETag None
+
+## Override Dreamhost default expiry times
+ExpiresActive on
+ExpiresByType text/css "access plus 24 hours"
+ExpiresByType text/javascript "access plus 2 hours"
+ExpiresByType application/javascript "access plus 2 hours"
+ExpiresByType application/json "access plus 2 hours"
+ExpiresByType text/html "access plus 2 hours"
 
