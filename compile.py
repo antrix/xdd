@@ -62,7 +62,8 @@ def gen_html_pages(content_list, jinja_env):
             os.makedirs(dest_dir)
 
         output_file = os.path.join(dest_dir, 'index.html')
-        open(output_file, 'w').write(o.encode("utf-8"))
+        with open(output_file, mode="w", encoding="utf-8") as f:
+            f.write(o)
 
         json_todump = dict(content)
         json_todump["date"] = json_todump["date"].isoformat('T') 
@@ -88,8 +89,8 @@ def gen_atom_feed(content_list, jinja_env):
         os.makedirs(dest_dir)
 
     output_file = os.path.join(dest_dir, 'index.atom')
-
-    open(output_file, 'w').write(o.encode("utf-8"))
+    with open(output_file, mode='w', encoding="utf-8") as f:
+        f.write(o)
 
 def main():
 

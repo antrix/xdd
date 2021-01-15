@@ -18,6 +18,23 @@ The intention is to encourage re-use and sharing of _code_ without facilitating 
 
 [1]: http://opensource.org/licenses/MIT
 
+
+# LOCAL DEVELOPMENT
+
+Create a virtual environment:
+
+    $ python3 -m venv venv 
+    $ source venv/bin/activate
+    $ pip install -r requirements.txt 
+
+    $ ln -s public-dummy public # One time
+
+Build and run local server:
+
+    $ ./make.sh
+    $ (cd public; python -m http.server)
+
+
 # DEPLOY
 
 On remote, create a new file `rebuild-site.sh` in the repo's git hooks directory:
