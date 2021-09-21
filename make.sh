@@ -6,7 +6,7 @@ STATIC_DIR="./static"
 export OUTPUT_DIR=${PUBLIC_DIR}.$(/bin/date +%F.%H-%M-%S)
 
 mkdir ${OUTPUT_DIR}
-python compile.py
+python3 compile.py
 
 cp -r ${STATIC_DIR}/. ${OUTPUT_DIR}
 
